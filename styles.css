@@ -86,8 +86,6 @@ nav {
 
 .postWrapper {
   margin: 30px 10px;
-  display: flex;
-  justify-content: space-between;
 }
 
 .post {
@@ -99,6 +97,20 @@ nav {
   box-sizing: border-box;
   box-shadow: 0px 4px 15px 0px rgb(0 0 0 / 5%);
   transition: 0.3s all;
+}
+
+.loadWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.filterWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.postBtn {
+  margin-bottom: 20px;
 }
 
 .title {

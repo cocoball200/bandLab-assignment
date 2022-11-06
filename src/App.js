@@ -1,3 +1,7 @@
+import PostListPage from "./page/PostListPage.js";
+import AudioPage from "./page/AudioPage.js";
+import { init } from "./lib/router.js";
+
 export default function App({ $target }) {
   this.route = () => {
     const { pathname } = location;
@@ -5,13 +9,13 @@ export default function App({ $target }) {
     $target.innerHTML = "";
 
     if (pathname === "/") {
-      console.log("post page");
+      new PostListPage({ $target }).render();
     } else if (pathname.indexOf("/audio") === 0) {
-      console.log("audio page");
-    } else {
-      console.log("not found");
+      new AudioPage({ $target }).render();
     }
   };
+
+  init(this.route);
 
   this.route();
 

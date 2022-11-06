@@ -9,7 +9,7 @@ export const fetchPosts = async (endpoint) => {
       const json = await response.json();
       return json;
     }
-    throw new Error("API 통신 실패");
+    throw new Error("error::");
   } catch (e) {
     alert(e.message);
   }

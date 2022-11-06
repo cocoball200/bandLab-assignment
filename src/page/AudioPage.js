@@ -1,7 +1,7 @@
 import AudioList from "../components/AudioList.js";
 import { AUDIOLIST } from "../lib/audio.js";
 
-export default function PostListPage({ $target }) {
+export default function AudioPage({ $target }) {
   const $page = document.createElement("div");
   $page.className = "audioPage";
   $target.appendChild($page);

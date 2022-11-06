@@ -12,6 +12,8 @@ export default function App({ $target }) {
       new PostListPage({ $target }).render();
     } else if (pathname.indexOf("/audio") === 0) {
       new AudioPage({ $target }).render();
+    } else {
+      new PostListPage({ $target }).render();
     }
   };
 

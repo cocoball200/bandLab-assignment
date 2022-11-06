@@ -2,6 +2,7 @@ import PostList from "../components/PostList.js";
 import LoadBtn from "../components/LoadBtn.js";
 import GroupBtn from "../components/GroupBtn.js";
 import SortBtn from "../components/SortBtn.js";
+import { fetchPosts } from "../lib/api.js";
 
 export default function PostListPage({ $target }) {
   const $page = document.createElement("div");
@@ -20,6 +21,54 @@ export default function PostListPage({ $target }) {
       postList: newState.postList || [],
     };
     this.render();
+  };
+
+  const handlePosts = async () => {
+    const posts = await fetchPosts("posts");
+    this.setState({
+      ...this.state,
+      postList: posts,
+    });
+  };
+
+  const handleSort = () => {
+    if (!this.state.isSortAlphabet) {
+      const result = this.state.postList.sort((x, y) =>
+        x.title.localeCompare(y.title)
+      );
+      this.setState({
+        ...this.state,
+        isSortAlphabet: !this.state.isSortAlphabet,
+        postList: result,
+      });
+    } else {
+      const result = this.state.postList.sort((x, y) =>
+        y.title.localeCompare(x.title)
+      );
+      this.setState({
+        ...this.state,
+        isSortAlphabet: !this.state.isSortAlphabet,
+        postList: result,
+      });
+    }
+  };
+
+  const handleGroupByUserId = () => {
+    if (!this.state.isGroupByUserId) {
+      const result = this.state.postList.sort((x, y) => x.userId - y.userId);
+      this.setState({
+        ...this.state,
+        isGroupByUserId: !this.state.isGroupByUserId,
+        postList: result,
+      });
+    } else {
+      const result = this.state.postList.sort((x, y) => y.userId - x.userId);
+      this.setState({
+        ...this.state,
+        isGroupByUserId: !this.state.isGroupByUserId,
+        postList: result,
+      });
+    }
   };
 
   this.render = () => {

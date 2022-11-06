@@ -76,17 +76,27 @@ export default function PostListPage({ $target }) {
     <div class="postWrapper"></div>
     `;
     const $postWrapper = document.querySelector(".postWrapper");
+    const $filter = document.createElement("div");
+    const $loadWrapper = document.createElement("div");
+    $loadWrapper.className = "loadWrapper";
+    $filter.className = "filterWrapper";
+    $postWrapper.appendChild($loadWrapper);
+    $postWrapper.appendChild($filter);
+
+    if (this.state.postList?.length <= 0) {
+      $filter.style.display = "none";
+    }
 
     new LoadBtn({
-      $target: $postWrapper,
+      $target: $loadWrapper,
       handlePosts,
     });
     new SortBtn({
-      $target: $postWrapper,
+      $target: $filter,
       handleSort,
     });
     new GroupBtn({
-      $target: $postWrapper,
+      $target: $filter,
       handleGroupByUserId,
     });
     new PostList({

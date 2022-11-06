@@ -6,11 +6,23 @@ export default function AudioPage({ $target }) {
   $page.className = "audioPage";
   $target.appendChild($page);
 
+  this.state = {
+    audioList: AUDIOLIST,
+  };
+
+  this.setState = (newState) => {
+    this.state = {
+      ...newState,
+      audioList: newState?.AUDIOLIST,
+    };
+    this.render();
+  };
+
   this.render = () => {
     $page.innerHTML = `<div class="audioWrapper"></div>`;
     new AudioList({
       $target: $page,
-      initialState: AUDIOLIST,
+      initialState: this.state.audioList,
     }).render();
   };
 }

@@ -1,0 +1,19 @@
+html,
+body,
+a,
+a:visited,
+ul,
+h1,
+h2,
+h3,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  background-color: #fff;
+  height: 100vh;
+}

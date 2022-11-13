@@ -10,7 +10,7 @@ export default function App({ $target }) {
 
     if (pathname === "/") {
       new PostListPage({ $target }).render();
-    } else if (pathname.indexOf("/audio") === 0) {
+    } else if (pathname === "/audio") {
       new AudioPage({ $target }).render();
     } else {
       new PostListPage({ $target }).render();
